@@ -17,7 +17,7 @@ I am developing on Manjaro, but can be done on Mac or Windows with WSL.
 For Mac users, you will want to install BINUTILS and GRUB
 
 BINUTILS:
-```brew install jpmrno/apps/crossyc --without-gcc```
+```brew install jpmrno/apps/crossyc```
 
 GRUB (this will install everything needed):
 ```brew install jpmrno/apps/grub```
