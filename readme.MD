@@ -18,4 +18,4 @@ For Mac users, you will want to install BINUTILS and GRUB. <br /> Juan Moreno (h
 
 ```brew install jpmrno/apps/x86_64-elf-gcc``` 
 
-This should install everything necessary to build this project<br />
+This should install everything necessary to build this project, though your mileage may vary<br />
