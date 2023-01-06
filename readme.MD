@@ -21,3 +21,5 @@ BINUTILS:
 
 GRUB (this will install everything needed):
 ```brew install jpmrno/apps/grub```
+
+Courtesy of Juan Moreno https://github.com/jupmoreno
