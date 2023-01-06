@@ -16,5 +16,6 @@ I am developing on Manjaro, but can be done on Mac or Windows with WSL.
 
 For Mac users, you will want to install BINUTILS and GRUB. <br /> Juan Moreno (https://github.com/jupmoreno) has graciously created a brew script for this.
 
-```brew install jpmrno/apps/x86_64-elf-gcc``` (This should install everything necessary) <br />
+```brew install jpmrno/apps/x86_64-elf-gcc``` 
 
+This should install everything necessary to build this project<br />
