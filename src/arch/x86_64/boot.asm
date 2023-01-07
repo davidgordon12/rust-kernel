@@ -9,6 +9,9 @@ start:
     call check_cpuid
     call check_long_mode
 
+    call setup_page_tables
+    call enable_paging
+
     ; print `OK` to the screen
     mov dword [0xb8000], 0x2f4b2f4f
     hlt
@@ -68,9 +71,60 @@ check_long_mode:
     cpuid                  ; CPU identification.
     test edx, 1 << 29      ; Test if the LM-bit, which is bit 29, is set in the D-register.
     jz .no_long_mode       ; They aren't, there is no long mode.
+    ret
 .no_long_mode:
     mov al, "2"
     jmp error
+
+setup_page_tables:
+    ; map first PML-4 entry to PDP
+    mov eax, pdp_table
+    or  eax, 0b11        ; present, writeable
+    mov [pml4_table], eax
+
+    ; map first PDP Table entry to PD
+    mov eax, pd_table
+    or  eax, 0b11        ; present, writeable
+    mov [pdp_table], eax
+
+    ; map each PD entry to a huge 2MiB page
+    mov ecx, 0          ; counter variable
+
+.map_pd_table:
+    ; map ecx-th PD entry to a huge page that starts at addr 2MiB*ecx
+    mov eax, 0x20000    ; 2MiB
+    mul ecx             ; start address of ecx-th page
+    or  eax, 0b10000011 ; present + writeable + huge
+    mov [pd_table + ecx * 8], eax ; map ecx-th entry
+
+    inc ecx
+    cmp ecx, 512        ; if counter == 512 then we are done mapping
+    jne .map_pd_table   ; otherwise map next entry
+
+    ret
+
+enable_paging:
+    ; load PML4 to cr3 register (CPU uses this to access the PML4 table)
+    mov eax, pml4_table
+    mov cr3, eax
+
+    ; enable PAE-flag in cr4 (Physical Address Extension)
+    mov eax, cr4
+    or  eax, 1 << 5
+    mov cr4, eax
+
+    ; set the long mode bit in the EFER MSR (model specific register)
+    mov ecx, 0xC0000080
+    rdmsr
+    or  eax, 1 << 8
+    wrmsr
+
+    ; enable paging in the cr0 register
+    mov eax, cr0
+    or  eax, 1 << 31
+    mov cr0, eax
+
+    ret
 
 error:
     ; print `ERR:` followed by the error code
@@ -81,6 +135,13 @@ error:
     hlt
 
 section .bss
+align 4096
+pml4_table:
+    resb 4096
+pdp_table:
+    resb 4096
+pd_table:
+    resb 4096
 stack_bottom:
     ; reserve 64 bytes
     resb 64 
