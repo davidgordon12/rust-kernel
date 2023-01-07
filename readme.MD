@@ -14,10 +14,8 @@ A personal OS written in Rust
 ### Footnotes
 I am developing on Manjaro, but can be done on Mac or Windows with WSL.
 
-For Mac users, you will want to install BINUTILS and GRUB
+For Mac users, you will want to install BINUTILS and GRUB. <br /> Juan Moreno (https://github.com/jupmoreno) has graciously created a brew script for this.
 
-BINUTILS:
-```'brew install jpmrno/apps/crossyc --without-gcc'```
+```brew install jpmrno/apps/x86_64-elf-gcc``` 
 
-GRUB (this will install everything needed):
-```'brew install jpmrno/apps/grub'```
+This should install everything necessary to build this project, though your mileage may vary<br />
