@@ -6,10 +6,17 @@ A personal OS written in Rust
 - Install qemu
 
 ## Build instructions
-- Clone the repository
-- Run ```make``` to compile and link the assembly files
+1. Clone the repository
+2. Install rustup
+```curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh```
+3. Add rust nightly
+```rustup override add nightly```
+4. Install xargo
+```cargo install xargo```
+5. Build the project
+- Run ```make``` to compile and link the assembly files and lib.rs
 - Run ```make iso``` to create the ISO image
-- Run ```make run``` to run qemu with the image
+- Run ```make run``` to run qemu with the image (this will also run the previous two commands)
 
 ### Footnotes
 I am developing on Manjaro, but can be done on Mac or Windows with WSL.
