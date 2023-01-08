@@ -13,7 +13,7 @@ A personal OS written in Rust
 ```rustup override add nightly```
 4. Install xargo
 ```cargo install xargo```
-5. Build the project
+5. Build the project with the following
 - Run ```make``` to compile and link the assembly files and lib.rs
 - Run ```make iso``` to create the ISO image
 - Run ```make run``` to run qemu with the image (this will also run the previous two commands)
