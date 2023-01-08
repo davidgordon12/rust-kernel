@@ -5,3 +5,6 @@ authors = ["David Gordon"]
 
 [lib]
 crate-type = ["staticlib"]
+
+[dependencies]
+rlibc = "1.0"
