@@ -7,6 +7,7 @@ name = "lysia"
 version = "0.1.0"
 dependencies = [
  "rlibc",
+ "volatile",
 ]
 
 [[package]]
@@ -14,3 +15,9 @@ name = "rlibc"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fc874b127765f014d792f16763a81245ab80500e2ad921ed4ee9e82481ee08fe"
+
+[[package]]
+name = "volatile"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "37c5d76c0f40ba4f8ac10ec4717d4e98ce3e58c5607eea36e9464226fc5e0a95"
