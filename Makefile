@@ -2,8 +2,8 @@ arch ?= x86_64
 kernel := build/kernel-$(arch).bin
 iso := build/lysia-$(arch).iso
 
-linker_script := src/arch/$(arch)/linker.ld
-grub_cfg := src/arch/$(arch)/grub.cfg
+linker_script := src/arch/$(arch)/tools/linker.ld
+grub_cfg := src/arch/$(arch)/tools/grub.cfg
 assembly_source_files := $(wildcard src/arch/$(arch)/*.asm)
 assembly_object_files := $(patsubst src/arch/$(arch)/%.asm, \
 	build/arch/$(arch)/%.o, $(assembly_source_files))
