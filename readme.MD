@@ -19,7 +19,7 @@ A personal OS written in Rust
 - Run ```make``` to compile and link the assembly files and lib.rs
 - Run ```make iso``` to create the ISO image
 - Run ```make run``` to run qemu with the image (this will also run the previous two commands)
-<br />
+
 ## Troubleshooting
   In case of a compile error after the previous build instructions, run <br />
   ```cargo clean``` <br />
