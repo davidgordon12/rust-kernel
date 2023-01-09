@@ -3,11 +3,27 @@
 version = 3
 
 [[package]]
+name = "bitflags"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8dead7461c1127cf637931a1e50934eb6eee8bff2f74433ac7909e9afcee04a3"
+
+[[package]]
 name = "lysia"
 version = "0.1.0"
 dependencies = [
+ "multiboot2",
  "rlibc",
  "volatile",
+]
+
+[[package]]
+name = "multiboot2"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b209a4456a3cc81fb69ad318ed6d47af81a90b829701f151354e3994d8b216d4"
+dependencies = [
+ "bitflags",
 ]
 
 [[package]]

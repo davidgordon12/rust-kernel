@@ -5,7 +5,7 @@ section .text
 bits 32
 start:
     mov esp, stack_top
-
+    mov edi, ebx                ; Move multiboot info pointer to edi
     call check_multiboot
     call check_cpuid
     call check_long_mode
@@ -160,5 +160,5 @@ pd_table:
     resb 4096
 stack_bottom:
     ; reserve 512 kilobytes
-    resb 4096 * 128 
+    resb 4096 * 4 
 stack_top:
