@@ -29,7 +29,7 @@ A personal OS written in Rust
 Otherwise, open an issue.
 
 ### Footnotes
-I am developing on Manjaro, but can be done on Mac or Windows with WSL.
+I am developing on Manjaro, but can be done on Mac or Windows with WSL, with some tweaks to the makefile.
 
 For Mac users, you will want to install BINUTILS and GRUB. <br /> Juan Moreno (https://github.com/jupmoreno) has graciously created a brew script for this.
 
