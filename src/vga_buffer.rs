@@ -139,3 +139,16 @@ pub fn print_bytes(bytes: &str)
 
     writer.write_str(bytes);
 }
+
+pub fn print_line(bytes: &str)
+{
+    let mut writer = Writer
+    {
+        column_position: 0,
+        color_code: ColorCode::new(Color::Pink, Color::White),
+        buffer: unsafe { Unique::new_unchecked(0xb8000 as *mut _)}
+    };
+
+    writer.write_str(bytes);
+    writer.write_byte(b'\n');
+}

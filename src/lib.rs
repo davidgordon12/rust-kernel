@@ -12,6 +12,8 @@ mod vga_buffer;
 #[no_mangle]
 pub extern fn kernel_main()
 {
+    vga_buffer::print_line("this is a test");
+
     vga_buffer::print_bytes("LysiaOS\n");
     vga_buffer::print_bytes("Welcome to version 0.1.1");
 
@@ -19,6 +21,7 @@ pub extern fn kernel_main()
 }
 
 #[panic_handler]
+#[allow(dead_code)]
 pub extern fn panic_handler(panic_info: &PanicInfo) -> !
 {
     loop {}
