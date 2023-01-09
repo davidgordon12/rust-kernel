@@ -5,7 +5,7 @@ use volatile::Volatile;
 #[allow(dead_code)]
 #[repr(u8)]
 pub enum Color 
-    {
+{
     Black      = 0,
     Blue       = 1,
     Green      = 2,
@@ -130,7 +130,6 @@ impl Writer
 
 pub fn print_bytes(bytes: &str)
 {
-    use core::fmt::Write;
     let mut writer = Writer
     {
         column_position: 0,
