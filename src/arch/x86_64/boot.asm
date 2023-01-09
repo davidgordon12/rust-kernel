@@ -159,6 +159,6 @@ pdp_table:
 pd_table:
     resb 4096
 stack_bottom:
-    ; reserve 64 bytes
-    resb 64 
+    ; reserve 512 kilobytes
+    resb 4096 * 128 
 stack_top:
