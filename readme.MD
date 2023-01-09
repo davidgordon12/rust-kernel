@@ -11,14 +11,16 @@ A personal OS written in Rust
 ```curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh```
 3. Add rust nightly
 ```rustup override add nightly```
-4. Install xargo
+4. Add rust-src
+```rustup override add rust-src```
+5. Install xargo
 ```cargo install xargo```
-5. Build the project with the following
+6. Build the project with the following
 - Run ```make``` to compile and link the assembly files and lib.rs
 - Run ```make iso``` to create the ISO image
 - Run ```make run``` to run qemu with the image (this will also run the previous two commands)
-
-### If you recieve any build errors, try running ```cargo clean``` in the working directory, and then try ```make run``` again
+<br />
+If you recieve any build errors, try running ```cargo clean``` in the working directory, and then try ```make run``` again
 
 ### Footnotes
 I am developing on Manjaro, but can be done on Mac or Windows with WSL.
