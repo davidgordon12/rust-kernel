@@ -1,5 +1,6 @@
 use core::ptr::Unique;
 use volatile::Volatile;
+use core::fmt::Write;
 
 #[derive(Debug, Clone, Copy)]
 #[allow(dead_code)]
@@ -57,6 +58,14 @@ pub struct Writer
     color_code: ColorCode,
     buffer: Unique<Buffer>
 }
+
+// very dangerous but works for now
+pub static mut WRITER: Writer = Writer 
+{
+    column_position: 0,
+    color_code: ColorCode::new(Color::Pink, Color::White),
+    buffer: unsafe { Unique::new_unchecked(0xb8000 as *mut _) },
+};
 
 impl Writer 
 {
@@ -141,7 +150,7 @@ pub fn print_bytes(bytes: &str)
 }
 
 pub fn print_line(bytes: &str)
-{
+{   
     let mut writer = Writer
     {
         column_position: 0,
@@ -149,6 +158,43 @@ pub fn print_line(bytes: &str)
         buffer: unsafe { Unique::new_unchecked(0xb8000 as *mut _)}
     };
 
-    writer.write_str(bytes);
-    writer.write_byte(b'\n');
+    write!(writer, "The numbers are {} and {}", 42, 1.0/3.0);
+}
+
+macro_rules! print
+{
+    ($($arg:tt)*) => 
+    ({
+        use core::fmt::Write;
+        let mut writer = &mut $crate::vga_buffer::WRITER;
+        writer.write_fmt(format_args!($($arg)*)).unwrap();
+    });
+}
+
+pub fn clear_screen() 
+{
+    let mut writer = Writer
+    {
+        column_position: 0,
+        color_code: ColorCode::new(Color::Black, Color::Black),
+        buffer: unsafe { Unique::new_unchecked(0xb8000 as *mut _)}
+    };
+
+    for _ in 0..BUFFER_HEIGHT
+    {
+        writer.new_line();
+    }
+}
+
+use core::fmt;
+
+impl fmt::Write for Writer 
+{
+    fn write_str(&mut self, s: &str) -> fmt::Result 
+    {
+        for byte in s.bytes() {
+          self.write_byte(byte)
+        }
+        Ok(())
+    }
 }
