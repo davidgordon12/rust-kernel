@@ -29,10 +29,9 @@ pub extern fn kernel_main(multiboot_information_address: usize)
         .memory_map_tag()
         .expect("Memory map tag required");
 
-    unsafe { print!("Memory areas: \n") };
     for area in memory_map_tag.memory_areas()
     {
-        unsafe { print!("start: 0x{:x}, length: 0x{:x}", area.base_addr, area.length) };
+        unsafe { print!("Memory areas: start: 0x{:x}, length: 0x{:x}", area.base_addr, area.length) };
     } 
 
     loop{}
@@ -42,7 +41,7 @@ pub extern fn kernel_main(multiboot_information_address: usize)
 #[allow(dead_code)]
 pub extern fn panic_handler(panic_info: &PanicInfo) -> !
 {
-    vga_buffer::print_line("System has panicked. Please abort");
+    unsafe { print!("System panic: {}. Please abort", panic_info) };
     loop {}
 }
 
