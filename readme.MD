@@ -1,9 +1,10 @@
 A personal OS written in Rust
 
 # Prerequistes
-- Install nasm
-- Install make
-- Install qemu
+- nasm
+- make
+- xorriso
+- qemu
 
 ## Build instructions
 1. Clone the repository
