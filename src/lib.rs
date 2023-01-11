@@ -9,8 +9,8 @@ extern crate volatile;
 extern crate multiboot2;
 
 #[macro_use]
-mod vga_buffer;
-mod memory;
+#[path = "video/vga_buffer.rs"] mod vga_buffer;
+#[path = "memory/frame_module.rs"] mod memory;
 
 #[no_mangle]
 pub extern fn kernel_main(multiboot_information_address: usize)
