@@ -6,6 +6,7 @@ bits 32
 start:
     mov esp, stack_top
     mov edi, ebx                ; Move multiboot info pointer to edi
+    
     call check_multiboot
     call check_cpuid
     call check_long_mode
