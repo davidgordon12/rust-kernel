@@ -23,11 +23,10 @@ A personal OS written in Rust
 - Run ```make run``` to run qemu with the image (this will also run the previous two commands)
 
 ## Troubleshooting
-  In case of a compile error after the previous build instructions, run <br />
+  In case of a compile error after the previous build instructions, try to run <br />
   ```cargo clean``` <br />
   followed by <br />
-  ```make run``` <br />
-Otherwise, open an issue.
+  ```make iso``` <br />
 
 ### Footnotes
 I am developing on Manjaro, but can be done on Mac or Windows with WSL, with some tweaks to the makefile.
