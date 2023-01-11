@@ -17,7 +17,7 @@ A personal OS written in Rust
 5. Install xargo
 ```cargo install xargo```
 6. Build the project with the following
-- Run ```make``` to compile and link the assembly files and lib.rs
+- Run ```make``` to compile and link all neccessary files
 - Run ```make iso``` to create the ISO image
 - Run ```make run``` to run qemu with the image (this will also run the previous two commands)
 
