@@ -76,7 +76,7 @@ impl Writer
             b'\n' => self.new_line(),
             byte => 
             {
-                if self.column_position >= BUFFER_WIDTH 
+                if self.column_position >= BUFFER_WIDTH // wrap text if it is too long
                 {
                     self.new_line();
                 }
@@ -130,7 +130,7 @@ impl Writer
             ascii_character: b' ',
             color_code: ColorCode(0 << 4 | 0)
         };
-        for col in 1..BUFFER_WIDTH 
+        for col in 0..BUFFER_WIDTH 
         {
             self.buffer().chars[row][col].write(blank);
         }
@@ -157,18 +157,6 @@ pub fn print_line(bytes: &str)
         color_code: ColorCode::new(Color::Pink, Color::White),
         buffer: unsafe { Unique::new_unchecked(0xb8000 as *mut _)}
     };
-
-    write!(writer, "The numbers are {} and {}", 42, 1.0/3.0);
-}
-
-macro_rules! print
-{
-    ($($arg:tt)*) => 
-    ({
-        use core::fmt::Write;
-        let mut writer = &mut $crate::vga_buffer::WRITER;
-        writer.write_fmt(format_args!($($arg)*)).unwrap();
-    });
 }
 
 pub fn clear_screen() 
@@ -197,4 +185,16 @@ impl fmt::Write for Writer
         }
         Ok(())
     }
+}
+
+#[macro_export]
+macro_rules! print
+{
+    ($($arg:tt)*) => 
+    ({
+        use core::fmt::Write;
+        let mut writer = &mut $crate::vga_buffer::WRITER;
+        writer.write_fmt(format_args!($($arg)*)).unwrap();
+        writer.write_byte(b'\n');
+    });
 }
