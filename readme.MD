@@ -13,7 +13,7 @@ A personal OS written in Rust
 3. Switch to rust nightly
 ```rustup override add nightly```
 4. Add rust-src
-```rustup override add rust-src```
+```rustup component add rust-src```
 5. Install xargo
 ```cargo install xargo```
 6. Build the project with the following
