@@ -10,7 +10,7 @@ A personal OS written in Rust
 1. Clone the repository
 2. Install rustup
 ```curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh```
-3. Add rust nightly
+3. Switch to rust nightly
 ```rustup override add nightly```
 4. Add rust-src
 ```rustup override add rust-src```
