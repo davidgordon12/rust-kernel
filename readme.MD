@@ -4,6 +4,7 @@ A personal OS written in Rust
 - nasm
 - make
 - xorriso
+- grub
 - qemu
 
 ## Build instructions
