@@ -1,4 +1,4 @@
-A personal OS written in Rust
+A minimal kernel written in Rust
 
 # Prerequistes
 - nasm
